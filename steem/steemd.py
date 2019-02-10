@@ -97,18 +97,18 @@ class Steemd(HttpClient):
             r.append(Post(post, steemd_instance=self))
         return r
 
-    def get_posts(self, limit=10, sort="hot", category=None, start=None):
+    def get_posts(self, limit=10, sort="hot", categories=[], start=None):
         """ Get multiple posts in an array.
 
             :param int limit: Limit the list of posts by ``limit``
             :param str sort: Sort the list by "recent" or "payout"
-            :param str category: Only show posts in this category
+            :param str categories: Only show posts in this categories
             :param str start: Show posts after this post. Takes an
                               identifier of the form ``author/permlink``
         """
 
         discussion_query = {
-            "tag": category,
+            "tag": categories,
             "limit": limit,
         }
         if start:
